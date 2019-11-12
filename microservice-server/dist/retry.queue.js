@@ -22,6 +22,33 @@ class ExponentialHandleErrorStrategy {
     }
     handleError(channel, msg, config) {
         console.log(msg);
+        const headers = msg.properties.headers;
+        const deathHeader = headers['x-death'] || [];
+        const deadHeaders = deathHeader.pop() || {};
+        const retryCount = headers['x-retry-count'] || 0;
+        const expiration = parseInt(deadHeaders['original-expiration'], 2) || 1000;
+        console.log(`${JSON.stringify(headers)} :${retryCount}: ${expiration}`);
+        channel.ack(msg);
+        if (retryCount <= 4) {
+            const newExpiration = expiration * 1.5;
+            const retryExp = Math.pow(retryCount + 1, 2);
+            const name = `retry_queue.${retryExp}`;
+            const exchange = channel.assertExchange('retry_exchange', 'topic');
+            const queue = channel
+                .assertQueue(name, {
+                deadLetterExchange: 'main_exchange',
+                deadLetterRoutingKey: 'main_queue',
+                messageTtl: retryExp * 10000,
+            })
+                .then(value => {
+                channel.bindQueue(name, 'retry_exchange', name);
+                channel.publish('retry_exchange', name, msg.content, {
+                    headers: {
+                        'x-retry-count': retryCount + 1,
+                    },
+                });
+            });
+        }
     }
 }
 let RetryQueue = class RetryQueue {
@@ -36,7 +63,7 @@ let RetryQueue = class RetryQueue {
 __decorate([
     rabbitmq_1.RabbitRPC({
         exchange: 'main_exchange',
-        routingKey: 'rpc_route',
+        routingKey: 'main_queue',
         queue: 'main_queue',
         handleError: new ExponentialHandleErrorStrategy(),
     }),

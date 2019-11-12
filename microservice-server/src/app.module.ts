@@ -12,12 +12,7 @@ import { RetryQueue } from './retry.queue';
           name: 'main_exchange',
           type: 'topic',
           options: {},
-        },
-        {
-          name: 'retry_exchange',
-          type: 'topic',
-          options: {},
-        },
+        }
       ],
       uri: 'amqp://localhost:5672',
     }),
