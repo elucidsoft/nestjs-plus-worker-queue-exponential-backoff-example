@@ -1646,19 +1646,15 @@
         "signature": "125e4400437d940c43a438d6f86bd1f20dec31a1cd7baca9b592a01580676897"
       },
       "../src/message.service.ts": {
-        "version": "28d1c41296c2b5f7149cf8a91ae2001378dd87b21b98a9300fcf276d91ee11da",
-        "signature": "61452202d13bbce4fbb2dcd7a1e3b91c602bba2609519be7cd30be820877d8d5"
-      },
-      "../src/retry.service.ts": {
-        "version": "d565bccc99bc326ead474e8d549c85b90ad2f5b099ec1cf84b9a68e0724d5d5a",
-        "signature": "209e5f8d1e5ff47b78c15b6adf283f00997f2315ce1b6f1c4cf6cf911724a851"
+        "version": "10d2a8869df7ae4878e3b56e0e5e9f3501abf30797cb5c42db934206db4a2cc3",
+        "signature": "4e6a0b3d4454f2aecd0d9eb89d2f82c3f15b1051618a6aaab43e02211cce5feb"
       },
       "../src/app.module.ts": {
-        "version": "b72e887712f696e0ce64142a572c8dcecd17789d1ab7801c67a255f2bbfc958e",
+        "version": "ef5cd82fb97ba34fcd1b980661eab7e598a45c044c193ec7c32fea15c87b61d6",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../src/main.ts": {
-        "version": "8cebfada0a48b0f3d579d736046a9fedb76e16b9e007288be41201fba045d8c1",
+        "version": "48418db2575d4382ed77fb56f3a6d6a2df7a22948e9f027c2499fec0db9a5e58",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -5210,20 +5206,11 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/retry.service.ts": [
-        "../node_modules/@nestjs-plus/rabbitmq/lib/index.d.ts",
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/math/math.module.ts",
         "../node_modules/@nestjs-plus/rabbitmq/lib/index.d.ts",
         "../src/message.service.ts",
-        "../src/retry.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",

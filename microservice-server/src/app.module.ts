@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 
-import { RabbitMQModule } from '@nestjs-plus/rabbitmq';
+import { RabbitMQModule } from '../../nestjs-plus/packages/rabbitmq';
 import { RetryQueue } from './retry.queue';
 
 @Module({

@@ -16,7 +16,6 @@ let MessagingService = class MessagingService {
         console.log(raw);
         console.log(raw.properties.headers['x-death']);
         console.log(`Received message: ${JSON.stringify(msg)}`);
-        return new rabbitmq_1.Nack(false);
     }
 };
 __decorate([
@@ -24,9 +23,6 @@ __decorate([
         exchange: 'main_exchange',
         routingKey: 'rpc_route',
         queue: 'main_queue',
-        queueOptions: {
-            deadLetterExchange: 'retry_exchange',
-        },
     }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),

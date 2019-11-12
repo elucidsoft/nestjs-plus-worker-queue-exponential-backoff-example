@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const rabbitmq_1 = require("@nestjs-plus/rabbitmq");
+const rabbitmq_1 = require("../../nestjs-plus/packages/rabbitmq");
 let AppController = class AppController {
     constructor(connection) {
         this.connection = connection;
@@ -23,7 +23,7 @@ let AppController = class AppController {
             exchange: 'main_exchange',
             routingKey: 'rpc_route',
             payload: 'Test 123',
-            timeout: 30000,
+            timeout: 5000,
         }, {
             headers: {
                 'x-retry-count': 2,

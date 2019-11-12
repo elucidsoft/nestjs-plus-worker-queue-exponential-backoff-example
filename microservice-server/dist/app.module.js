@@ -9,7 +9,7 @@ var AppModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
-const rabbitmq_1 = require("@nestjs-plus/rabbitmq");
+const rabbitmq_1 = require("../../nestjs-plus/packages/rabbitmq");
 const retry_queue_1 = require("./retry.queue");
 let AppModule = AppModule_1 = class AppModule {
 };

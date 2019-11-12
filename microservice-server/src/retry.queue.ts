@@ -2,12 +2,25 @@ import { Inject, Logger } from '@nestjs/common';
 import {
   AmqpConnection,
   RabbitRPC,
-  MessageHandlerOptions,
-  Nack,
-} from '@nestjs-plus/rabbitmq';
+  MessageHandlerErrorStrategy,
+  RabbitMQConfig,
+  MessageHandlerErrorBehavior,
+} from '../../nestjs-plus/packages/rabbitmq';
 import { Injectable } from '@nestjs/common';
 import { AppController } from './app.controller';
 
+import * as amqplib from 'amqplib';
+
+class ExponentialHandleErrorStrategy implements MessageHandlerErrorStrategy {
+  constructor(public errorBehavior?: MessageHandlerErrorBehavior) {}
+
+  handleError(channel, msg, config) {
+    console.log(msg);
+   
+  }
+}
+
+// tslint:disable-next-line: max-classes-per-file
 @Injectable()
 export class RetryQueue {
   private readonly logger = new Logger(AppController.name);
@@ -17,35 +30,12 @@ export class RetryQueue {
   ) {}
 
   @RabbitRPC({
-    exchange: 'retry_exchange',
-    routingKey: 'retry_queue.5000',
-    queue: 'retry_queue.5000',
-    queueOptions: {
-      deadLetterExchange: 'main_exchange',
-      deadLetterRoutingKey: 'rpc_route',
-      messageTtl: 5000,
-      expires: 10000,
-    },
+    exchange: 'main_exchange',
+    routingKey: 'rpc_route',
+    queue: 'main_queue',
+    handleError: new ExponentialHandleErrorStrategy(),
   })
   public async pubSubHandler5000(msg: {}, raw) {
     console.log('5');
-    return new Nack(false);
-  }
-
-  @RabbitRPC({
-    exchange: 'retry_exchange',
-    routingKey: 'retry_queue.10000',
-    queue: 'retry_queue.10000',
-    queueOptions: {
-      deadLetterExchange: 'main_exchange',
-      deadLetterRoutingKey: 'rpc_route',
-      messageTtl: 10000,
-      expires: 20000,
-    },
-  })
-  public async pubSubHandler10000(msg: {}, raw) {
-    console.log('10');
-
-    return new Nack(false);
   }
 }

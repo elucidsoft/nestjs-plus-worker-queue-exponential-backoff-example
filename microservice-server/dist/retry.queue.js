@@ -13,9 +13,17 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const rabbitmq_1 = require("@nestjs-plus/rabbitmq");
+const rabbitmq_1 = require("../../nestjs-plus/packages/rabbitmq");
 const common_2 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
+class ExponentialHandleErrorStrategy {
+    constructor(errorBehavior) {
+        this.errorBehavior = errorBehavior;
+    }
+    handleError(channel, msg, config) {
+        console.log(msg);
+    }
+}
 let RetryQueue = class RetryQueue {
     constructor(connection) {
         this.connection = connection;
@@ -23,45 +31,19 @@ let RetryQueue = class RetryQueue {
     }
     async pubSubHandler5000(msg, raw) {
         console.log('5');
-        return new rabbitmq_1.Nack(false);
-    }
-    async pubSubHandler10000(msg, raw) {
-        console.log('10');
-        return new rabbitmq_1.Nack(false);
     }
 };
 __decorate([
     rabbitmq_1.RabbitRPC({
-        exchange: 'retry_exchange',
-        routingKey: 'retry_queue.5000',
-        queue: 'retry_queue.5000',
-        queueOptions: {
-            deadLetterExchange: 'main_exchange',
-            deadLetterRoutingKey: 'rpc_route',
-            messageTtl: 5000,
-            expires: 10000,
-        },
+        exchange: 'main_exchange',
+        routingKey: 'rpc_route',
+        queue: 'main_queue',
+        handleError: new ExponentialHandleErrorStrategy(),
     }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], RetryQueue.prototype, "pubSubHandler5000", null);
-__decorate([
-    rabbitmq_1.RabbitRPC({
-        exchange: 'retry_exchange',
-        routingKey: 'retry_queue.10000',
-        queue: 'retry_queue.10000',
-        queueOptions: {
-            deadLetterExchange: 'main_exchange',
-            deadLetterRoutingKey: 'rpc_route',
-            messageTtl: 10000,
-            expires: 20000,
-        },
-    }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", Promise)
-], RetryQueue.prototype, "pubSubHandler10000", null);
 RetryQueue = __decorate([
     common_2.Injectable(),
     __param(0, common_1.Inject(rabbitmq_1.AmqpConnection)),
