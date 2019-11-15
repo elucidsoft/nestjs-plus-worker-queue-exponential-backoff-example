@@ -13,19 +13,12 @@ export class AppController {
     // (this.connection.channel.assertQueue()
 
     // //try {
-    return await this.connection.request(
-      {
-        exchange: 'main_exchange',
-        routingKey: 'rpc_route',
-        payload: 'Test 123',
-        timeout: 5000,
-      },
-      {
-        headers: {
-          'x-retry-count': 2,
-        },
-      },
-    );
+    return await this.connection.request({
+      exchange: 'main_exchange',
+      routingKey: 'main_queue',
+      payload: 'Test 123',
+      timeout: 1000000,
+    });
     // const t = await this.connection.createRpc(async (msg: string, rawMessage:any) => {
     //   return msg;
     // }, { exchange: '', routingKey: '', queue: '' });

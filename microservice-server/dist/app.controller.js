@@ -21,13 +21,9 @@ let AppController = class AppController {
     async test() {
         return await this.connection.request({
             exchange: 'main_exchange',
-            routingKey: 'rpc_route',
+            routingKey: 'main_queue',
             payload: 'Test 123',
-            timeout: 5000,
-        }, {
-            headers: {
-                'x-retry-count': 2,
-            },
+            timeout: 1000000,
         });
     }
 };

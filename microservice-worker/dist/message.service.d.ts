@@ -1,3 +1,3 @@
 export declare class MessagingService {
-    pubSubHandler(msg: {}, raw: any): Promise<void>;
+    pubSubHandler(msg: {}, raw: any): Promise<number>;
 }

@@ -10,7 +10,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const rabbitmq_1 = require("../../nestjs-plus/packages/rabbitmq");
-const retry_queue_1 = require("./retry.queue");
 let AppModule = AppModule_1 = class AppModule {
 };
 AppModule = AppModule_1 = __decorate([
@@ -23,18 +22,13 @@ AppModule = AppModule_1 = __decorate([
                         type: 'topic',
                         options: {},
                     },
-                    {
-                        name: 'retry_exchange',
-                        type: 'topic',
-                        options: {},
-                    },
                 ],
                 uri: 'amqp://localhost:5672',
             }),
             AppModule_1,
         ],
         controllers: [app_controller_1.AppController],
-        providers: [retry_queue_1.RetryQueue],
+        providers: [],
     })
 ], AppModule);
 exports.AppModule = AppModule;
