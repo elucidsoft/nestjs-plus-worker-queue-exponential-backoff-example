@@ -1810,15 +1810,11 @@
         "signature": "125e4400437d940c43a438d6f86bd1f20dec31a1cd7baca9b592a01580676897"
       },
       "../src/app.controller.ts": {
-        "version": "07787db433ca4dd506093f9868a5dbdaf47ea3e7a903f6db1d91353a717cc466",
+        "version": "bd6fda8c7b4d5bf41cd4218a4247adf5215ba5925d480865ebe7d727c295ddda",
         "signature": "8a2a100ea4718b8fb902218cfe12fd4cc735d7305e8c8025b4c5b478596b866c"
       },
-      "../src/retry.queue.ts": {
-        "version": "82397ff162cb3dcc8d678be5b3d3c6aa89878e2a4d07cc720da15f0659dffb77",
-        "signature": "41caa9e98b01448c61da5c51e164da5d6843e4459f04babc45f7dadf0c2b9941"
-      },
       "../src/app.module.ts": {
-        "version": "c53b4b50608c51c65f050f41db8c08bdfe426ad714619203cb42e4baa962d832",
+        "version": "e3ff4abfc22a7030203cd4b0c5181619d6f75a1d4976c02916330fefce87afda",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/index.d.ts": {
@@ -5740,21 +5736,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/retry.queue.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../../nestjs-plus/packages/rabbitmq/lib/index.d.ts",
-        "../src/app.controller.ts",
-        "../node_modules/@types/amqplib/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/app.controller.ts",
         "../../nestjs-plus/packages/rabbitmq/lib/index.d.ts",
-        "../src/retry.queue.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -9805,9 +9790,6 @@
       "../src/app.controller.ts": [
         "../../nestjs-plus/packages/rabbitmq/lib/index.d.ts"
       ],
-      "../src/retry.queue.ts": [
-        "../../nestjs-plus/packages/rabbitmq/lib/index.d.ts"
-      ],
       "../node_modules/@nestjs/core/index.d.ts": [
         "../node_modules/reflect-metadata/index.d.ts",
         "../../nestjs-plus/node_modules/@nestjs/core/adapters/index.d.ts",
@@ -10560,7 +10542,6 @@
       "../../nestjs-plus/packages/rabbitmq/lib/rabbitmq.module.d.ts",
       "../../nestjs-plus/packages/rabbitmq/lib/index.d.ts",
       "../src/app.controller.ts",
-      "../src/app.module.ts",
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/main.ts",
       "../node_modules/@types/anymatch/index.d.ts",
@@ -10601,7 +10582,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/retry.queue.ts"
+      "../src/app.module.ts"
     ]
   },
   "version": "3.7.2"

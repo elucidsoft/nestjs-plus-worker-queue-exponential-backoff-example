@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 
-import { RabbitMQModule } from '../../nestjs-plus/packages/rabbitmq';
-import { RetryQueue } from './retry.queue';
+import {
+  RabbitMQModule,
+  MessageHandlerErrorBehavior,
+} from '../../nestjs-plus/packages/rabbitmq';
 
 @Module({
   imports: [
@@ -11,14 +13,16 @@ import { RetryQueue } from './retry.queue';
         {
           name: 'main_exchange',
           type: 'topic',
+
           options: {},
-        }
+        },
       ],
+
       uri: 'amqp://localhost:5672',
     }),
     AppModule,
   ],
   controllers: [AppController],
-  providers: [RetryQueue],
+  providers: [],
 })
 export class AppModule {}

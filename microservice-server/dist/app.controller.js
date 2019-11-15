@@ -23,7 +23,7 @@ let AppController = class AppController {
             exchange: 'main_exchange',
             routingKey: 'main_queue',
             payload: 'Test 123',
-            timeout: 10000,
+            timeout: 1000000,
         });
     }
 };

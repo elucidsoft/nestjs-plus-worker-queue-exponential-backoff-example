@@ -17,7 +17,7 @@ export class AppController {
       exchange: 'main_exchange',
       routingKey: 'main_queue',
       payload: 'Test 123',
-      timeout: 10000,
+      timeout: 1000000,
     });
     // const t = await this.connection.createRpc(async (msg: string, rawMessage:any) => {
     //   return msg;

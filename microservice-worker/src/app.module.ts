@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { MathModule } from './math/math.module';
-import { RabbitMQModule } from '@nestjs-plus/rabbitmq';
+import { RabbitMQModule } from '../../nestjs-plus/packages/rabbitmq';
 import { MessagingService } from './message.service';
 
 @Module({
   imports: [
     RabbitMQModule.forRoot({
+      prefetchCount: 1,
       exchanges: [
         {
           name: 'main_exchange',
@@ -14,7 +14,7 @@ import { MessagingService } from './message.service';
       ],
       uri: 'amqp://localhost:5672',
     }),
-    MathModule,
+    AppModule,
   ],
   providers: [MessagingService],
 })
